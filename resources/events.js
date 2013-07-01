@@ -8,9 +8,10 @@ module.exports = function(server){
 
 		var event_data = req.body;
 
-		if(!event_data.type){return next(new restify.MissingParameterError("We need a type for this event, buddy."));}
-		if(_.str.trim(event_data.meta).length == 0 ){return next(new restify.InvalidArgumentError("If you pass meta give it some content, please."));}
-
+		if(!event_data.type){return next(new restify.MissingParameterError("Please provide a type for this event"));}
+		if(_.str.trim(event_data.meta).length == 0 ){return next(new restify.InvalidArgumentError("Please provide content for meta"));}
+		if(!event_data.API_key){return next(new restify.MissingParameterError("Please provide an API key with your request"));}
+		if(!event_data.application_name){return next(new restify.MissingParameterError("Please provide an application name for your request"));}
 
 		var event = new Event(event_data);
 
@@ -24,5 +25,12 @@ module.exports = function(server){
 		});
 
 	});
+
+	server.get("/events", function(req, res, next){
+		Event.findAll({}, function(err, docs){
+			if(err){return next(new restify.InternalError("Something bad happened1 Could not retrieve the events"));}
+		});
+	});
+
 
 }

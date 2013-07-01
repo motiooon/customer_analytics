@@ -16,7 +16,8 @@
     "underscore.string": "~2.3.1",
     "connect": "~2.8.1",
     "connect-redis": "~1.4.5",
-    "express": "~3.3.1"
+    "express": "~3.3.1",
+    "hat": "0.0.3"
   },
   "devDependencies": {},
   "scripts": {

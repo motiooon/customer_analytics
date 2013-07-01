@@ -14,21 +14,23 @@ module.exports = function(server) {
 			MODEL_NAME: 'Profile',
 
 			// Write only fields
-			WRITE_FIELDS: ['email', 'external_id', 'created' , 'updated'],
+			WRITE_FIELDS: ['email', 'external_id', 'created' , 'last_modified'],
 
 			// Read only fields
-			READ_FIELDS: ['email', 'external_id', 'created' , 'updated'],
+			READ_FIELDS: ['email', 'external_id', 'created' , 'last_modified'],
 
 			// Valid sort fields
-			SORT_FIELDS: ['email', 'external_id', 'created' , 'updated'],
+			SORT_FIELDS: ['email', 'external_id', 'created' , 'last_modified'],
 
 			// Fields to query on
-			QUERY_FIELDS: ['email', 'external_id', 'created' , 'updated']
+			QUERY_FIELDS: ['email', 'external_id', 'created' , 'last_modified']
 
 		},
 
 		ProfileSchema = new server.db.Schema({
 			email: {type: String},
+			API_key       : {type: String},
+			application_name       : {type: String},
 			external_id: {type: String},
 			created: {
 				type: Date,

@@ -33,6 +33,8 @@ server.use(restify.jsonp());
 server.use(restify.gzipResponse());
 server.use(restify.bodyParser());
 server.use(middleware.authorization());
+server.use(middleware.call_middleware());
+
 //server.use(connect.cookieParser());
 //server.use(connect.session({ store: new RedisStore({client:client}), secret: 'keyboard$#%#$' }));
 //server.use(middleware.logsessions());
